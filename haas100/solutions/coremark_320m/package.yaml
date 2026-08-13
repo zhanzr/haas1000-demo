@@ -1,0 +1,45 @@
+
+## 第一部分： 基础信息
+name: coremark_320m                                  # <必选项> 包名称
+version: master                                    # <必选项> 组件版本号
+description: CoreMark 1.0.1 benchmark for HaaS100 @ 320MHz      # <必选项>
+type: solution                                      # <必选项>
+
+solution:
+  cpu_id: cpu0
+  board_name: haas100
+  toolchain_prefix: arm-none-eabi
+  toolchain_path: "D:/arm-none-eabi-tc"
+
+## 第二部分：依赖信息
+depends:
+  - haas100: master
+  - init: master
+  - cli: master
+  - osal_aos: master
+  - posix: master
+
+supported_boards:
+  - haas100: master
+
+## 第四部分：编译连接信息
+build_config:
+  include:
+    - src
+    - src/coremark_1_0_1
+  cflag: -include aos_compat.h -Wno-implicit-function-declaration -Wno-implicit-int -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -Ofast -ffp-contract=fast -funroll-loops
+
+source_file:
+  - "maintask.c"
+  - "src/app_main.c"
+  - "src/utils.c"
+  - "src/core_portme.c"
+  - "src/coremark_1_0_1/core_list_join.c"
+  - "src/coremark_1_0_1/core_main.c"
+  - "src/coremark_1_0_1/core_matrix.c"
+  - "src/coremark_1_0_1/core_state.c"
+  - "src/coremark_1_0_1/core_util.c"
+
+## 第五部分：配置信息
+def_config:
+  CLI_CONFIG_STACK_SIZE: 8192
