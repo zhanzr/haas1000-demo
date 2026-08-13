@@ -108,12 +108,12 @@ The fixed configs are already in place
    while connecting USB / powering on, release after power-on.
 2. Flash:
    ```
-   cd /d D:\haas1000_prj\haas100\hardware\chip\haas1000\release\write_flash_tool
-   bes_download.exe
+   cd D:/haas1000_prj/haas100/hardware/chip/haas1000/release/write_flash_tool
+   ./bes_download.exe
    ```
    - Default config: boot-critical images + RTOS only (fast, reliable).
-   - `flash_full.bat`: also littlefs + boot1_sec + factory + pub_otp.
-   - `flash_littlefs.bat`: filesystem only.
+   - `flash_full.sh`: also littlefs + boot1_sec + factory + pub_otp.
+   - `flash_littlefs.sh`: filesystem only.
 
 ### USB stability
 

@@ -8,7 +8,7 @@ tick, and reports Dhrystones/sec and DMIPS/MHz.
 ## Build
 
 ```
-build.bat            # or: scons --board=haas100
+sh build.sh          # or: scons --board=haas100
 ```
 
 Requires the vendored SDK + toolchain per the repo/board READMEs.
@@ -18,8 +18,8 @@ Requires the vendored SDK + toolchain per the repo/board READMEs.
 Board in download mode:
 
 ```
-cd /d D:\haas1000_prj\haas100\hardware\chip\haas1000\release\write_flash_tool
-bes_download.exe
+cd D:/haas1000_prj/haas100/hardware/chip/haas1000/release/write_flash_tool
+./bes_download.exe
 ```
 
 ## Expected output (COM port @ 1500000)

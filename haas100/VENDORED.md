@@ -52,8 +52,8 @@ These changes are required to build with the stock ARM GNU toolchain
 | `hardware/chip/haas1000/release/write_flash_tool/bes_dld_cfg.yaml` | fixed COM/baud/flash offsets; minimal image set (boot + RTOS only) |
 | `.../write_flash_tool/bes_dld_cfg_full.yaml` | full image set (adds littlefs/boot1_sec/factory/pub_otp) |
 | `.../write_flash_tool/bes_dld_cfg_littlefs.yaml` | filesystem-only config |
-| `.../write_flash_tool/flash_full.bat` | helper: flash full image set |
-| `.../write_flash_tool/flash_littlefs.bat` | helper: flash filesystem only |
+| `.../write_flash_tool/flash_full.sh` | helper: flash full image set |
+| `.../write_flash_tool/flash_littlefs.sh` | helper: flash filesystem only |
 
 The toolchain sysroot header `D:\arm-none-eabi-tc\arm-none-eabi\include\aos_compat.h`
 (installed into the toolchain, not the SDK) is documented in the repo

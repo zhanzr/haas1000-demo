@@ -21,14 +21,14 @@ maintask.c          <- aos_maintask -> board_init -> aos_components_init
 k_app_config.h      <- kernel config switches
 package.yaml        <- solution config (board, toolchain, deps, cflags)
 SConstruct/Makefile <- build entry (aostools scons)
-build.bat           <- one-command build helper
+build.sh            <- one-command build helper (sh build.sh)
 posix note:         <- see root README (SDK patches)
 ```
 
 ## Build
 
 ```
-build.bat            # or: scons --board=haas100
+sh build.sh          # or: scons --board=haas100
 ```
 
 Prerequisites (SDK junctions, toolchain, `aos-tools`, SDK patches) are

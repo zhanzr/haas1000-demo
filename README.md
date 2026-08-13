@@ -82,7 +82,7 @@ warnings that the 2021 SDK triggers (`-Wno-implicit-function-declaration
 
 ```
 cd haas100\solutions\helloworld_demo
-build.bat            # or: scons --board=haas100
+sh build.sh          # or: scons --board=haas100
 ```
 
 Outputs: `out\helloworld_demo@haas100.bin` (app image),
@@ -96,8 +96,8 @@ download configs are vendored in
 board in download mode (hold **Download** on power-on):
 
 ```
-cd /d D:\haas1000_prj\haas100\hardware\chip\haas1000\release\write_flash_tool
-bes_download.exe
+cd D:/haas1000_prj/haas100/hardware/chip/haas1000/release/write_flash_tool
+./bes_download.exe
 ```
 
 See `haas100\README.md` for partition offsets, console baud, and USB
