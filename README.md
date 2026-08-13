@@ -40,6 +40,8 @@ repo as a HaaS1000-only subset under `haas100\{kernel,hardware,components}`
 
 ## Prerequisites / one-time setup
 
+0. **Git LFS** (the vendored SDK binaries are stored via Git LFS). After
+   cloning: `git lfs install && git lfs pull`.
 1. **Build tools**: Python 3 + `pip install aos-tools` (provides the `aos`
    command and the `aostools` scons module).
 2. **ARM toolchain**: a stock GNU Arm Embedded Toolchain exposed at a
