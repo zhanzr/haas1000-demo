@@ -1,0 +1,4 @@
+# Vendored AliOS Things SDK large binaries -> Git LFS
+*.a filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text

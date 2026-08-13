@@ -95,22 +95,20 @@ offset:
 The shipped vendor `bes_dld_cfg.yaml` had these `ADDR` values commented
 out with wrong legacy offsets; flashing with them put the 2nd bootloader
 in the boot-info region, so boot1 failed with
-`ota_get_bootinfo ... update_link`. The fixed configs are in
-`flash_tool\`.
+`ota_get_bootinfo ... update_link`. The fixed configs are vendored in
+`hardware\chip\haas1000\release\write_flash_tool\` (see `VENDORED.md`).
 
 ## Flashing firmware
 
 The Bes download tool reads `bes_dld_cfg.yaml` from its own directory.
+The fixed configs are already in place
+(`hardware\chip\haas1000\release\write_flash_tool\`).
 
-1. Copy the versioned, fixed configs into the SDK tool folder (once):
-   ```
-   copy haas100\flash_tool\* D:\AliOS-Things\hardware\chip\haas1000\release\write_flash_tool\
-   ```
-2. Put the board in **download mode**: hold the **Download/boot** button
+1. Put the board in **download mode**: hold the **Download/boot** button
    while connecting USB / powering on, release after power-on.
-3. Flash:
+2. Flash:
    ```
-   cd /d D:\AliOS-Things\hardware\chip\haas1000\release\write_flash_tool
+   cd /d D:\haas1000_prj\haas100\hardware\chip\haas1000\release\write_flash_tool
    bes_download.exe
    ```
    - Default config: boot-critical images + RTOS only (fast, reliable).
