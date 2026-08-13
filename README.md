@@ -3,23 +3,17 @@
 AliOS Things 3.3 application development for the Aliyun **HaaS 100**
 development board (HaaS1000 SoC).
 
-```
-<repo-root>\
-  .gitignore
-  .gitattributes                 <- Git LFS for vendored SDK binaries
-  README.md                     <- this file: overall / repo-level detail
-  haas100\                      <- HaaS100 board workspace (board-level detail
-  │                               lives in haas100\README.md)
-    .aos                        <- aos workspace marker
-    VENDORED.md                 <- upstream AliOS Things commit + patches
-    kernel\                     <- vendored SDK subset (real dirs, tracked)
-    hardware\                   <- vendored SDK subset (tracked)
-    components\                 <- vendored SDK subset (tracked)
-    board_images\               <- board photos / diagrams for haas100\README.md
-    README.md                   <- board-level detail
-    solutions\helloworld_demo\  <- the app project (project-level detail in
-                                    solutions\helloworld_demo\README.md)
-```
+Layout at a glance:
+
+- `haas100/` — the HaaS100 board workspace.
+  - `haas100/kernel`, `haas100/hardware`, `haas100/components` — the
+    **vendored** AliOS Things SDK subset (HaaS1000-only, tracked in this
+    repo; upstream commit + patches in `haas100/VENDORED.md`).
+  - `haas100/solutions/` — the applications: `helloworld_demo`,
+    `dhry_320m`, `coremark_320m`. Each has its own README.
+  - `haas100/board_images/` — board photos embedded in `haas100/README.md`.
+  - `haas100/README.md` — board-level detail (hardware, flash).
+  - `haas100/.aos` — aos workspace marker.
 
 Three README levels, per request:
 - **Repo / overall** — this file: how the pieces fit together, prerequisites,
@@ -44,14 +38,13 @@ repo as a HaaS1000-only subset under `haas100\{kernel,hardware,components}`
    cloning: `git lfs install && git lfs pull`.
 1. **Build tools**: Python 3 + `pip install aos-tools` (provides the `aos`
    command and the `aostools` scons module).
-2. **ARM toolchain**: a stock GNU Arm Embedded Toolchain (e.g. Arm GNU
-   Toolchain 15.3, or the era-matched 10.3) exposed at a **space-free
-   path**. Each `solutions/*/package.yaml` selects it via
-   `toolchain_prefix: arm-none-eabi` and `toolchain_path: <space-free
-   path to the toolchain root>` (on this machine a junction gives a
-   space-free path). The toolchain `bin` is on the user PATH. GCC 14/15
-   default-error warnings are suppressed in the solution CFLAGS (see
-   below); on 10.3 those flags are harmless but unnecessary.
+2. **ARM toolchain**: the **Arm GNU Toolchain 15.3.1** (`arm-none-eabi`),
+   exposed at a **space-free path**. Each `solutions/*/package.yaml`
+   selects it via `toolchain_prefix: arm-none-eabi` and
+   `toolchain_path: <space-free path to the toolchain root>` (on this
+   machine a junction gives a space-free path). The toolchain `bin` is
+   on the user PATH. GCC 14/15 default-error warnings are suppressed in
+   the solution CFLAGS (see below).
 
 ## SDK patches (already applied in the vendored copy)
 
@@ -69,8 +62,7 @@ sysroot: `<toolchain>/arm-none-eabi/include/aos_compat.h`.
 The solution CFLAGS additionally suppress GCC 14/15 default-error
 warnings that the 2021 SDK triggers (`-Wno-implicit-function-declaration
 -Wno-implicit-int -Wno-error=incompatible-pointer-types
--Wno-error=int-conversion`); these are in
-`solutions\helloworld_demo\package.yaml`.
+-Wno-error=int-conversion`); these are in each `solutions/*/package.yaml`.
 
 ## Build
 

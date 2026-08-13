@@ -8,21 +8,15 @@ board project for it.
 
 Photos of the board live in `board_images\`:
 
-| Image | File |
-|-------|------|
-| Board view | `board_images/board_0.png` |
-| Board view | `board_images/board_1.png` |
-| Board view | `board_images/board_2.png` |
-| Board view | `board_images/board_3.png` |
-| Board view | `board_images/board_4.png` |
-
-```
 ![HaaS100 board_0](board_images/board_0.png)
+
 ![HaaS100 board_1](board_images/board_1.png)
+
 ![HaaS100 board_2](board_images/board_2.png)
+
 ![HaaS100 board_3](board_images/board_3.png)
+
 ![HaaS100 board_4](board_images/board_4.png)
-```
 
 ## SoC: HaaS1000
 
