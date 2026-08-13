@@ -24,7 +24,7 @@ supported_boards:
 
 ## 第四部分：编译连接信息
 build_config:
-  cflag: -include aos_compat.h
+  cflag: -include aos_compat.h -Wno-implicit-function-declaration -Wno-implicit-int -Wno-error=incompatible-pointer-types -Wno-error=int-conversion
 
 source_file:
   - "maintask.c"
