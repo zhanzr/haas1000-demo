@@ -55,7 +55,7 @@ These changes are required to build with the stock ARM GNU toolchain
 | `.../write_flash_tool/flash_full.sh` | helper: flash full image set |
 | `.../write_flash_tool/flash_littlefs.sh` | helper: flash filesystem only |
 
-The toolchain sysroot header `D:\arm-none-eabi-tc\arm-none-eabi\include\aos_compat.h`
+The toolchain sysroot header `<toolchain>/arm-none-eabi/include/aos_compat.h`
 (installed into the toolchain, not the SDK) is documented in the repo
 README and provides the `_POSIX_*` macros used by `components/posix`.
 

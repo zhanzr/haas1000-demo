@@ -4,7 +4,7 @@ AliOS Things 3.3 application development for the Aliyun **HaaS 100**
 development board (HaaS1000 SoC).
 
 ```
-D:\haas1000_prj\
+<repo-root>\
   .gitignore
   .gitattributes                 <- Git LFS for vendored SDK binaries
   README.md                     <- this file: overall / repo-level detail
@@ -44,20 +44,14 @@ repo as a HaaS1000-only subset under `haas100\{kernel,hardware,components}`
    cloning: `git lfs install && git lfs pull`.
 1. **Build tools**: Python 3 + `pip install aos-tools` (provides the `aos`
    command and the `aostools` scons module).
-2. **ARM toolchain**: a stock GNU Arm Embedded Toolchain exposed at a
-   space-free path. **Default: Arm GNU Toolchain 15.3.Rel1** at
-   `D:\arm-none-eabi-tc` (a junction to
-   `D:\Arm\GNU Toolchain mingw-w64-x86_64-arm-none-eabi`), `bin` on the
-   user PATH. The solution selects it in
-   `solutions\helloworld_demo\package.yaml`:
-   ```yaml
-   solution:
-     toolchain_prefix: arm-none-eabi
-     toolchain_path: "D:/arm-none-eabi-tc"
-   ```
-   Fallback: the era-matched "GNU Arm Embedded Toolchain 10.3-2021.10"
-   (repoint the `D:\arm-none-eabi-tc` junction to it) — this 2021 SDK
-   needs no extra flags on 10.3.
+2. **ARM toolchain**: a stock GNU Arm Embedded Toolchain (e.g. Arm GNU
+   Toolchain 15.3, or the era-matched 10.3) exposed at a **space-free
+   path**. Each `solutions/*/package.yaml` selects it via
+   `toolchain_prefix: arm-none-eabi` and `toolchain_path: <space-free
+   path to the toolchain root>` (on this machine a junction gives a
+   space-free path). The toolchain `bin` is on the user PATH. GCC 14/15
+   default-error warnings are suppressed in the solution CFLAGS (see
+   below); on 10.3 those flags are harmless but unnecessary.
 
 ## SDK patches (already applied in the vendored copy)
 
@@ -69,8 +63,8 @@ fixed Bes download configs.
 
 Additionally, install the sysroot compat header (defines the `_POSIX_*`
 macros used by `components/posix/src/enviro.c`, as a pure-`#define`
-header so the linker-script step is unaffected):
-`D:\arm-none-eabi-tc\arm-none-eabi\include\aos_compat.h`
+header so the linker-script step is unaffected), into the toolchain
+sysroot: `<toolchain>/arm-none-eabi/include/aos_compat.h`.
 
 The solution CFLAGS additionally suppress GCC 14/15 default-error
 warnings that the 2021 SDK triggers (`-Wno-implicit-function-declaration
@@ -96,7 +90,7 @@ download configs are vendored in
 board in download mode (hold **Download** on power-on):
 
 ```
-cd D:/haas1000_prj/haas100/hardware/chip/haas1000/release/write_flash_tool
+cd haas100/hardware/chip/haas1000/release/write_flash_tool
 ./bes_download.exe
 ```
 
