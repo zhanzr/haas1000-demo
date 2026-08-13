@@ -15,7 +15,6 @@
 
 #define LED_CNT 5
 #define FREQ_PRINT_INTERVAL 20
-#define ADC_PRINT_INTERVAL 20
 
 static void led_all(led_e onoff)
 {
@@ -59,7 +58,9 @@ static void print_adc_channels(void)
     adc_read_chan(HAL_GPADC_CHAN_4, "chan4");
     adc_read_chan(HAL_GPADC_CHAN_5, "chan5");
     adc_read_chan(HAL_GPADC_CHAN_6, "chan6");
-    adc_read_chan(HAL_GPADC_CHAN_ADCKEY, "adckey");
+    /* HAL_GPADC_CHAN_ADCKEY (7) is the ADC key-scan input, driven by the
+     * adckey IRQ mechanism (hal_adckey_set_irq); hal_gpadc_get_volt()
+     * does not sample it, so it is excluded from the voltage scan. */
 }
 
 int application_start(int argc, char *argv[])
@@ -76,8 +77,10 @@ int application_start(int argc, char *argv[])
 
         if ((count % FREQ_PRINT_INTERVAL) == 0) {
             print_cpu_freq();
-            print_adc_channels();
         }
+
+        /* print ADC channels at the same cadence as hello world */
+        print_adc_channels();
 
         /* knight-rider LED sweep across LED1..LED5 (GPIO40,41,36,35,34) */
         for (id = 1; id <= LED_CNT; id++) {
