@@ -1,0 +1,24 @@
+Common:
+  COM: COM21
+  BAUT_RATE: 921600
+  BIN_DIR: ota_bin
+  PROGRAMMER: '.\tools\programmer2001.bin'
+  DLD_TOOLS_EXE: '.\tools\dldtool.exe'
+  LOG_SWITCH: ON
+  WAIT_PRESS_ENTER: OFF
+  PROGRESSBAR_SWITCH: OFF
+  REDIRECT_PIPE: OFF
+  PIPE_BUFFER_SIZE: 2000000
+  LOG_PRINT_DELAY_IN_MS:  100
+
+FILE_LIST:
+   - LITTLEFS:
+       FILE_NAME: littlefs.bin
+       ADDR: 0x2CB32000
+       SIZE: 0x4A8000
+       SWITCH: ON
+   - PUB_OTP:
+       FILE_NAME: pub_otp.bin
+       ADDR: 0x0
+       SIZE: 0x400
+       SWITCH: ON

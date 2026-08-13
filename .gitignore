@@ -1,0 +1,30 @@
+# ===== AliOS Things / HaaS100 project =====
+
+# AliOS Things SDK junctions -> D:\AliOS-Things (external SDK, NOT part of this repo)
+haas100/kernel/
+haas100/hardware/
+haas100/components/
+
+# aos build outputs (created under the solution dir by scons)
+haas100/solutions/*/out/
+haas100/solutions/*/aos_sdk/
+haas100/solutions/*/binary/
+haas100/solutions/*/.sconsign.dblite
+haas100/solutions/*/aos.elf
+haas100/solutions/*/aos.map
+
+# aos workspace caches
+haas100/.config
+haas100/.config_burn
+haas100/.config_monitor
+haas100/.components.db
+
+# temp extraction (bes_download.exe / pyinstxtractor)
+bes_download.exe_extracted/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store

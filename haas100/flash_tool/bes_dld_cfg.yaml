@@ -1,0 +1,57 @@
+Common:
+  #Com Ports:
+  # ['COM3','COM4','COM5'...]: Serial port is specified;
+  #  NULL: Auto List Serial ports
+  COM: COM21
+
+  #Baud Rate: : default baut rate is 921600
+  # Range of values:   921600 -- 3000000
+  BAUT_RATE: 921600
+
+  #Binarys files sub directory
+  BIN_DIR: ota_bin
+
+  # Programmer file path,relative path or absolute path
+  PROGRAMMER: '.\tools\programmer2001.bin'
+
+  # dldtoos.exe file path,relative path or absolute path
+  DLD_TOOLS_EXE: '.\tools\dldtool.exe'
+
+  # Switch of tools log.
+  LOG_SWITCH: ON
+
+  # Press enter key to exit when the download is completed.
+  WAIT_PRESS_ENTER: OFF
+
+  # Switch of progressbar
+  PROGRESSBAR_SWITCH: OFF
+
+  # stdout and stderr redirect to PIPE.
+  REDIRECT_PIPE: OFF
+
+  # PIPE buffer size
+  PIPE_BUFFER_SIZE: 2000000
+  # log print delay in ms
+  LOG_PRINT_DELAY_IN_MS:  100
+
+FILE_LIST:
+   - BOOT1:
+       FILE_NAME: ota_boot1.bin
+       ADDR: 0x2C000000
+       SIZE: 0x10000
+       SWITCH: ON
+   - BOOTINFO:
+       FILE_NAME: boot_info.bin
+       ADDR: 0x2C010000
+       SIZE: 0x2000
+       SWITCH: ON
+   - BOOT2A:
+       FILE_NAME: ota_boot2a.bin
+       ADDR: 0x2C012000
+       SIZE: 0x18000
+       SWITCH: ON
+   - RTOS:
+       FILE_NAME: ota_rtos.bin
+       ADDR: 0x2C02A000
+       SIZE: 0x578000
+       SWITCH: ON

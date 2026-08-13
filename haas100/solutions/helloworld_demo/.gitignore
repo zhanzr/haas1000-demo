@@ -1,0 +1,11 @@
+out/
+binary/
+aos_sdk/
+aos.elf
+aos.map
+*.o
+*.d
+.sconsign.dblite
+.config
+.config_burn
+.config_monitor
