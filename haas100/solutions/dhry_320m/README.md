@@ -14,12 +14,15 @@ Requires the vendored SDK + toolchain per the repo/board READMEs.
 
 ## Flash
 
-Board in download mode (run from the repository root):
+Build first (`./build.sh`), put the board in **download mode** (hold
+Download while powering on), then run from this directory:
 
 ```
-cd haas100/hardware/chip/haas1000/release/write_flash_tool
-./bes_download.exe
+./flash.sh
 ```
+
+`flash.sh` stages this project's image and calls the Bes download tool
+(no manual path switching).
 
 The run repeats every 10 s. A fresh flash of the RTOS image updates the
 `ota_rtos.bin` in `write_flash_tool/ota_bin/` (the build's post-image

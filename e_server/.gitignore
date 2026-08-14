@@ -1,0 +1,8 @@
+# build artifacts
+e_server
+e_server.exe
+server.o
+*.o
+
+# scratch / logs
+_*

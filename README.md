@@ -10,10 +10,16 @@ Layout at a glance:
     **vendored** AliOS Things SDK subset (HaaS1000-only, tracked in this
     repo; upstream commit + patches in `haas100/VENDORED.md`).
   - `haas100/solutions/` — the applications: `helloworld_demo`,
-    `dhry_320m`, `coremark_320m`. Each has its own README.
+    `dhry_320m`, `coremark_320m`, `eth_http` (Ethernet + web server),
+    `wifi_http` (Wi-Fi + web server). Each has its own README.
   - `haas100/board_images/` — board photos embedded in `haas100/README.md`.
   - `haas100/README.md` — board-level detail (hardware, flash).
   - `haas100/.aos` — aos workspace marker.
+
+The `e_server/` directory at the repo root is the **standalone web app**
+(source of truth for the site, adapted for the HaaS100: 5 LEDs, first 3
+GPADC channels). `eth_http` embeds its generated `web_assets.h` and
+mirrors its API on the board. `e_server` is kept for future changes.
 
 Three README levels, per request:
 - **Repo / overall** — this file: how the pieces fit together, prerequisites,

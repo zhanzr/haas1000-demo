@@ -6,8 +6,6 @@ board project for it.
 
 ## Board images
 
-Photos of the board live in `board_images\`:
-
 ![HaaS100 board_0](board_images/board_0.png)
 
 ![HaaS100 board_1](board_images/board_1.png)
@@ -53,12 +51,6 @@ The GPADC exposes 8 channels (`drivers/platform/hal/hal_gpadc.h`):
 | 0       | `chan0` (pin) |
 | 1       | **battery voltage** (internal) |
 | 2..6    | external pins |
-| 7       | ADC key-scan input (not a voltage channel; excluded from scans) |
-
-There is **no public V-reference or die-temperature channel** in the SDK
-ADC HAL. Read a channel with `hal_gpadc_open()` +
-`hal_gpadc_get_volt()` (returns mV); the ADC-key channel is driven by the
-adckey IRQ mechanism and is not sampled by `hal_gpadc_get_volt()`.
 
 ## Console UART
 

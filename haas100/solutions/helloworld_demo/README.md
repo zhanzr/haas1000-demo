@@ -44,9 +44,16 @@ out\helloworld_demo@haas100.elf   <- ELF for gdb (SWD)
 
 ## Flash
 
-Board-specific flash procedure (download mode, `bes_download.exe`,
-partition offsets) is in the board README (`..\..\README.md`). The fixed
-flash configs are versioned in `..\..\flash_tool\`.
+Build first (`./build.sh`), put the board in **download mode** (hold
+Download while powering on), then run from this directory:
+
+```
+./flash.sh
+```
+
+`flash.sh` stages this project's image and calls the Bes download tool
+(no manual path switching). Board-specific flash detail (download mode,
+partition offsets) is in the board README (`..\..\README.md`).
 
 ## Expected output (COM port @ 1500000)
 

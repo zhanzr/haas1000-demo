@@ -86,7 +86,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
             first_copy = 1;
         }
 
-        if (datalen + copylen >= CH395_MAX_DATA_SIZE) {
+        if (datalen + copylen > CH395_MAX_DATA_SIZE) {
             aos_free(data);
             return ERR_BUF;
         }

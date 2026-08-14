@@ -1,0 +1,7 @@
+#ifndef WIFI_CONFIG_H
+#define WIFI_CONFIG_H
+
+#define DEFAULT_AP      "your_ssid"
+#define DEFAULT_PASSWD  "your_password"
+
+#endif

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>e_server · HaaS100</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>e_server</h1>
+  <p class="sub">HaaS100 &middot; embedded web demo</p>
+  <div class="board-strip">
+    <img src="public/board_0.png" alt="board photo 0">
+    <img src="public/board_1.png" alt="board photo 1">
+    <img src="public/board_2.png" alt="board photo 2">
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="led">LED control</button>
+  <button class="tab-btn" data-tab="adc">ADC values</button>
+  <button class="tab-btn" data-tab="board">Board info</button>
+</nav>
+
+<main>
+  <!-- Tab 1: LED control -->
+  <section id="tab-led" class="panel active">
+    <h2>LED control</h2>
+    <p>Check / uncheck to switch the on-board LEDs. Each change is sent to the
+       board and applied immediately (no page reload).</p>
+    <div id="led-list"></div>
+    <p id="led-status" class="status"></p>
+  </section>
+
+  <!-- Tab 2: ADC values -->
+  <section id="tab-adc" class="panel">
+    <h2>ADC values</h2>
+    <div class="row">
+      <label for="adc-interval">Sample interval</label>
+      <select id="adc-interval">
+        <option value="1000">1 s</option>
+        <option value="2000">2 s</option>
+        <option value="4000">4 s</option>
+      </select>
+      <span class="status">samples are polled only while this tab is open</span>
+    </div>
+    <div class="plots">
+      <div class="plot">
+        <h3>chan0 (mV)</h3>
+        <canvas id="plot-ch0"></canvas>
+      </div>
+      <div class="plot">
+        <h3>battery (mV)</h3>
+        <canvas id="plot-bat"></canvas>
+      </div>
+      <div class="plot">
+        <h3>chan2 (mV)</h3>
+        <canvas id="plot-ch2"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab 3: Board info -->
+  <section id="tab-board" class="panel">
+    <h2>Board information</h2>
+    <div class="row">
+      <button id="info-refresh" class="btn">Refresh</button>
+      <span class="status">unavailable fields are shown as N/A</span>
+    </div>
+    <table class="info">
+      <tr><th>Architecture</th><td id="info-arch">N/A</td></tr>
+      <tr><th>LAN IP</th><td id="info-lan">N/A</td></tr>
+      <tr><th>Public IP</th><td id="info-pub">N/A</td></tr>
+      <tr><th>Location</th><td id="info-geo">N/A</td></tr>
+      <tr><th>Weather</th><td id="info-weather">N/A</td></tr>
+    </table>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
